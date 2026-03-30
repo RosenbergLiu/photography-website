@@ -45,13 +45,8 @@ export const s3Router = createTRPCRouter({
           Bucket: process.env.S3_BUCKET_NAME,
           Key: key,
           ContentType: contentType,
+          ContentLength: size,
         });
-
-        // Remove checksum middleware to prevent x-amz-checksum-crc32 params from
-        // being added to the presigned URL. R2 rejects requests where the
-        // placeholder checksum (CRC32 of 0 bytes) doesn't match the actual upload,
-        // and returns the error without CORS headers — causing a browser CORS error.
-        command.middlewareStack.removeByTag("BODY_CHECKSUM");
 
         const presignedUrl = await getSignedUrl(s3Client, command, {
           expiresIn: 60 * 6, // 6 minutes
