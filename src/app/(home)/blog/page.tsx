@@ -8,6 +8,8 @@ import {
   BlogViewLoadingStatus,
 } from "@/modules/blog/ui/views/blog-view";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Blog",
   description: "Blog",
