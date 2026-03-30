@@ -8,6 +8,8 @@ import {
   DiscoverLoading,
 } from "@/modules/discover/ui/views/discover-view";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Discover",
   description:
