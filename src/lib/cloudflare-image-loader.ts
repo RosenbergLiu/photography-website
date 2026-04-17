@@ -1,6 +1,9 @@
 const S3_PUBLIC_URL = process.env.NEXT_PUBLIC_S3_PUBLIC_URL || "";
 
 const normalizeSrc = (src: string) => {
+  if (S3_PUBLIC_URL && src.startsWith(S3_PUBLIC_URL)) {
+    src = src.slice(S3_PUBLIC_URL.length);
+  }
   return src.startsWith("/") ? src.slice(1) : src;
 };
 
